@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasoNotificaciones.API", "CasoNotificaciones.API\CasoNotificaciones.API.csproj", "{4346CF56-4ED4-4BF5-B688-7ABF8B77B8CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasoNotificaciones.ConsoleApp", "CasoNotificaciones.ConsoleApp\CasoNotificaciones.ConsoleApp.csproj", "{F9A9F855-A1CE-461F-96B1-F5014E30CA68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4346CF56-4ED4-4BF5-B688-7ABF8B77B8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4346CF56-4ED4-4BF5-B688-7ABF8B77B8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4346CF56-4ED4-4BF5-B688-7ABF8B77B8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4346CF56-4ED4-4BF5-B688-7ABF8B77B8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A9F855-A1CE-461F-96B1-F5014E30CA68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A9F855-A1CE-461F-96B1-F5014E30CA68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A9F855-A1CE-461F-96B1-F5014E30CA68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A9F855-A1CE-461F-96B1-F5014E30CA68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace CasoNotificaciones.API.Strategies
+﻿namespace CasoNotificaciones.ConsoleApp.Strategies
 {
     public class NotificadorSMS : Notificador
     {
