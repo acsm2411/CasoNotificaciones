@@ -9,10 +9,14 @@
 
         public override void Enviar(string mensaje)
         {
+            Console.WriteLine("\nMensaje a enviar: \"" + mensaje + "\" por correo\n");
+
             this.Destinatarios.ForEach(destinatario =>
             {
-                //Enviar SMS
+                Console.WriteLine("Mensaje de texto enviado a " + destinatario);
             });
+
+            Console.WriteLine();
         }
     }
 }

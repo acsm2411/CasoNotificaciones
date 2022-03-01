@@ -58,12 +58,14 @@ while(!finalizado);
 
 Mensaje ObtenerDatosDeMensaje() 
 {
+    Console.Clear();
+
     var mensaje = new Mensaje
     {
         Destinatarios = new List<string>()
     };
 
-    Console.Write("\n\nIngrese el contenido del mensaje: ");
+    Console.Write("Ingrese el contenido del mensaje: ");
     mensaje.Contenido = Console.ReadLine();
 
     ConsoleKeyInfo respuestaDestinatarios = default;
@@ -79,7 +81,7 @@ Mensaje ObtenerDatosDeMensaje()
 
             if(destinatario.Length == 0)
             {
-                Console.WriteLine("\n\nEl destinatario no puede estar vacio, ingrese la informacion requerida\n");
+                Console.WriteLine("\nEl destinatario no puede estar vacio, ingrese la informacion requerida");
             }
         }
         while (destinatario.Length == 0);

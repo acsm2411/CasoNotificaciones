@@ -9,10 +9,14 @@
 
         public override void Enviar(string mensaje)
         {
+            Console.WriteLine("\nMensaje a enviar: \"" + mensaje + "\" por Facebook\n");
+
             this.Destinatarios.ForEach(destinatario =>
             {
-                //Enviar Mensaje Facebook
+                Console.WriteLine("Mensaje enviado a " + destinatario);
             });
+
+            Console.WriteLine();
         }
     }
 }
