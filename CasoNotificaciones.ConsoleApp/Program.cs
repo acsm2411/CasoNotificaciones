@@ -112,7 +112,7 @@ Mensaje ObtenerDatosDeMensaje()
             Console.Write("\nIngrese el destinatario: ");
             destinatario = Console.ReadLine();
 
-            if(destinatario.Length == 0)
+            if(string.IsNullOrEmpty(destinatario))
             {
                 Console.WriteLine("\nEl destinatario no puede estar vacio, ingrese la informacion requerida");
             }
