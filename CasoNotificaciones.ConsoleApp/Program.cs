@@ -18,35 +18,35 @@ do
     Console.Write("Ingrese la opcion deseada: ");
     respuestaMenu = Console.ReadKey();
 
-    Mensaje mensaje;
+    var mensajes = new List<Mensaje>();
 
     switch (respuestaMenu.Key)
     {
         case ConsoleKey.D1:
         case ConsoleKey.NumPad1:
-            mensaje = CrearMensaje(TipoMensaje.Correo);
-            aplicacion.EnviarMensaje(mensaje);
+            mensajes.Add(CrearMensaje(TipoMensaje.Correo));
+            aplicacion.EnviarMensaje(mensajes);
 
             finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D2:
         case ConsoleKey.NumPad2:
-            mensaje = CrearMensaje(TipoMensaje.Facebook);
-            aplicacion.EnviarMensaje(mensaje);
+            mensajes.Add(CrearMensaje(TipoMensaje.Facebook));
+            aplicacion.EnviarMensaje(mensajes);
 
             finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D3:
         case ConsoleKey.NumPad3:
-            mensaje = CrearMensaje(TipoMensaje.SMS);
-            aplicacion.EnviarMensaje(mensaje);
+            mensajes.Add(CrearMensaje(TipoMensaje.SMS));
+            aplicacion.EnviarMensaje(mensajes);
 
             finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D4:
         case ConsoleKey.NumPad4:
-            mensaje = CrearMensaje(TipoMensaje.Interno);
-            aplicacion.EnviarMensaje(mensaje);
+            mensajes.Add(CrearMensaje(TipoMensaje.Interno));
+            aplicacion.EnviarMensaje(mensajes);
 
             finalizado = ValidarContinuacion();
             break;

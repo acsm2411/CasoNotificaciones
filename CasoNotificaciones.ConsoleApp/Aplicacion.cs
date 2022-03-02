@@ -12,16 +12,19 @@ namespace CasoNotificaciones.ConsoleApp
             this.creatorService = new NotificadorCreatorService();
         }
 
-        public void EnviarMensaje(Mensaje mensaje)
+        public void EnviarMensaje(List<Mensaje> mensajes)
         {
-            if (mensaje != null)
+            if (mensajes.Count != 0)
             {
-                var notificador = creatorService.CrearNotificador(mensaje.Tipo, mensaje.Destinatarios);
-                notificador.Enviar(mensaje.Contenido);
+                mensajes.ForEach(mensaje =>
+                {
+                    var notificador = creatorService.CrearNotificador(mensaje.Tipo, mensaje.Destinatarios);
+                    notificador.Enviar(mensaje.Contenido);
+                });
             }
             else
             {
-                throw new Exception("El objeto mensaje no puede ser nulo");
+                throw new Exception("Debe haber al menos un mensaje para continuar con la operacion");
             }
         }
     }
