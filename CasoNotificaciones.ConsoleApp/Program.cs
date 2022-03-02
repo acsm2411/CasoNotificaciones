@@ -122,7 +122,7 @@ Mensaje ObtenerDatosDeMensaje()
                 Console.WriteLine("\nEl destinatario no puede estar vacio, ingrese la informacion requerida");
             }
         }
-        while (destinatario.Length == 0);
+        while (string.IsNullOrEmpty(destinatario));
 
         mensaje.Destinatarios.Add(destinatario);
 
