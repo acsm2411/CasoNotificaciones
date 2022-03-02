@@ -13,7 +13,8 @@ do
     Console.WriteLine("2. Enviar mensaje por Facebook");
     Console.WriteLine("3. Enviar mensaje por SMS");
     Console.WriteLine("4. Enviar mensaje interno");
-    Console.WriteLine("5. Salir\n");
+    Console.WriteLine("5. Enviar mensajes de varios tipos");
+    Console.WriteLine("6. Salir\n");
     Console.Write("Ingrese la opcion deseada: ");
     respuestaMenu = Console.ReadKey();
 
@@ -51,6 +52,10 @@ do
             break;
         case ConsoleKey.D5:
         case ConsoleKey.NumPad5:
+
+            break;
+        case ConsoleKey.D6:
+        case ConsoleKey.NumPad6:
             finalizado = true;
             break;
         default:
@@ -62,14 +67,14 @@ while(!finalizado);
 
 Mensaje CrearMensaje(TipoMensaje tipo)
 {
-    ImprimerHeaderCreacionDeMensaje(tipo);
+    ImprimirHeaderCreacionDeMensaje(tipo);
     var mensaje = ObtenerDatosDeMensaje();
     mensaje.Tipo = tipo.ToString();
 
     return mensaje;
 }
 
-void ImprimerHeaderCreacionDeMensaje(TipoMensaje tipo)
+void ImprimirHeaderCreacionDeMensaje(TipoMensaje tipo)
 {
     Console.Clear();
 
