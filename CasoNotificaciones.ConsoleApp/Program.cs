@@ -1,5 +1,5 @@
-﻿using CasoNotificaciones.ConsoleApp.Models;
-using CasoNotificaciones.ConsoleApp;
+﻿using CasoNotificaciones.ConsoleApp;
+using CasoNotificaciones.ConsoleApp.Models;
 
 var aplicacion = new Aplicacion();
 bool finalizado = false;
@@ -52,7 +52,15 @@ do
             break;
         case ConsoleKey.D5:
         case ConsoleKey.NumPad5:
+            var tiposDeMensajeEscogidos = CapturarMultiplesTiposDeMensaje();
 
+            tiposDeMensajeEscogidos.ForEach(tipoMensaje =>
+            {
+                mensajes.Add(CrearMensaje(tipoMensaje));
+                aplicacion.EnviarMensaje(mensajes);
+            });
+
+            finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D6:
         case ConsoleKey.NumPad6:
@@ -172,6 +180,94 @@ bool ValidarContinuacion()
         Console.Clear();
         return false;
     }
+}
+
+List<TipoMensaje> CapturarMultiplesTiposDeMensaje()
+{
+    Console.Clear();
+
+    var listaDeMensajes = new List<TipoMensaje>();
+    var finalizado = false;
+
+    do
+    {
+        ConsoleKeyInfo opcionEscogida;
+
+        Console.WriteLine("***************** Seleccione el tipo que desea agregar al envio de mensajes ****************\n");
+        Console.WriteLine("1. Correo");
+        Console.WriteLine("2. Facebook");
+        Console.WriteLine("3. SMS");
+        Console.WriteLine("4. Mensaje Interno");
+        Console.WriteLine("5. Volver\n");
+        Console.Write("Ingrese la opcion deseada: ");
+        opcionEscogida = Console.ReadKey();
+
+        switch (opcionEscogida.Key)
+        {
+            case ConsoleKey.D1:
+            case ConsoleKey.NumPad1:
+                if (!listaDeMensajes.Contains(TipoMensaje.Correo))
+                {
+                    listaDeMensajes.Add(TipoMensaje.Correo);
+
+                    Console.WriteLine("\n\n\"Correo\" agregado a los tipos para el siguiente envio\n");
+                }
+                else
+                {
+                    Console.WriteLine("\n\nEl correo ya se encuentra entre las opciones agregadas, escoge otra opcion\n");
+                }
+                break;
+            case ConsoleKey.D2:
+            case ConsoleKey.NumPad2:
+                if (!listaDeMensajes.Contains(TipoMensaje.Facebook))
+                {
+                    listaDeMensajes.Add(TipoMensaje.Facebook);
+
+                    Console.WriteLine("\n\n\"Facebook\" agregado a los tipos para el siguiente envio\n");
+                }
+                else
+                {
+                    Console.WriteLine("\n\nFacebook ya se encuentra entre las opciones agregadas, escoge otra opcion\n");
+                }
+                break;
+            case ConsoleKey.D3:
+            case ConsoleKey.NumPad3:
+                if (!listaDeMensajes.Contains(TipoMensaje.SMS))
+                {
+                    listaDeMensajes.Add(TipoMensaje.SMS);
+                    
+                    Console.WriteLine("\n\n\"SMS\" agregado a los tipos para el siguiente envio\n");
+                }
+                else
+                {
+                    Console.WriteLine("\n\nSMS ya se encuentra entre las opciones agregadas, escoge otra opcion\n");
+                }
+                break;
+            case ConsoleKey.D4:
+            case ConsoleKey.NumPad4:
+                if (!listaDeMensajes.Contains(TipoMensaje.Interno))
+                {
+                    listaDeMensajes.Add(TipoMensaje.Interno);
+                    
+                    Console.WriteLine("\n\n\"Mensaje Interno\" agregado a los tipos para el siguiente envio\n");
+                }
+                else
+                {
+                    Console.WriteLine("\n\nMensaje interno ya se encuentra entre las opciones agregadas, escoge otra opcion\n");
+                }
+                break;
+            case ConsoleKey.D5:
+            case ConsoleKey.NumPad5:
+                finalizado = true;
+                break;
+            default:
+                Console.WriteLine("\n\nOption invalida, intente con otra diferente\n");
+                break;
+        }
+    }
+    while (!finalizado);
+
+    return listaDeMensajes;
 }
 
 enum TipoMensaje { 
