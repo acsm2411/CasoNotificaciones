@@ -15,8 +15,6 @@
             {
                 Console.WriteLine("Mensaje de texto enviado a " + destinatario);
             });
-
-            Console.WriteLine();
         }
     }
 }

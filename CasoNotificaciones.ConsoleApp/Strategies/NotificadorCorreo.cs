@@ -15,8 +15,6 @@
             {
                 Console.WriteLine("Correo enviado a " + destinatario);
             });
-
-            Console.WriteLine();
         }
     }
 }

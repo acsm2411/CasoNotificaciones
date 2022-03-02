@@ -6,7 +6,7 @@ bool finalizado = false;
 
 do
 {
-    ConsoleKeyInfo respuestaMenu = default;
+    ConsoleKeyInfo respuestaMenu;
 
     Console.WriteLine("***************** Menu Principal ****************\n");
     Console.WriteLine("1. Enviar mensaje por correo");
@@ -23,27 +23,31 @@ do
     {
         case ConsoleKey.D1:
         case ConsoleKey.NumPad1:
-            mensaje = ObtenerDatosDeMensaje();
-            mensaje.Tipo = "Correo";
+            mensaje = CrearMensaje(TipoMensaje.Correo);
             aplicacion.EnviarMensaje(mensaje);
+
+            finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D2:
         case ConsoleKey.NumPad2:
-            mensaje = ObtenerDatosDeMensaje();
-            mensaje.Tipo = "Facebook";
+            mensaje = CrearMensaje(TipoMensaje.Facebook);
             aplicacion.EnviarMensaje(mensaje);
+
+            finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D3:
         case ConsoleKey.NumPad3:
-            mensaje = ObtenerDatosDeMensaje();
-            mensaje.Tipo = "SMS";
+            mensaje = CrearMensaje(TipoMensaje.SMS);
             aplicacion.EnviarMensaje(mensaje);
+
+            finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D4:
         case ConsoleKey.NumPad4:
-            mensaje = ObtenerDatosDeMensaje();
-            mensaje.Tipo = "Interno";
+            mensaje = CrearMensaje(TipoMensaje.Interno);
             aplicacion.EnviarMensaje(mensaje);
+
+            finalizado = ValidarContinuacion();
             break;
         case ConsoleKey.D5:
         case ConsoleKey.NumPad5:
@@ -56,9 +60,38 @@ do
 }
 while(!finalizado);
 
-Mensaje ObtenerDatosDeMensaje() 
+Mensaje CrearMensaje(TipoMensaje tipo)
+{
+    ImprimerHeaderCreacionDeMensaje(tipo);
+    var mensaje = ObtenerDatosDeMensaje();
+    mensaje.Tipo = tipo.ToString();
+
+    return mensaje;
+}
+
+void ImprimerHeaderCreacionDeMensaje(TipoMensaje tipo)
 {
     Console.Clear();
+
+    switch (tipo)
+    {
+        case TipoMensaje.Correo:
+            Console.WriteLine("************* Notificador de correo *************\n");
+            break;
+        case TipoMensaje.Facebook:
+            Console.WriteLine("************* Notificador de Facebook *************\n");
+            break;
+        case TipoMensaje.SMS:
+            Console.WriteLine("************* Notificador de SMS *************\n");
+            break;
+        case TipoMensaje.Interno:
+            Console.WriteLine("************* Notificador interno *************\n");
+            break;
+    }
+}
+
+Mensaje ObtenerDatosDeMensaje() 
+{
 
     var mensaje = new Mensaje
     {
@@ -107,4 +140,38 @@ Mensaje ObtenerDatosDeMensaje()
     while (respuestaDestinatarios.Key != ConsoleKey.N);
 
     return mensaje;
+}
+
+bool ValidarContinuacion()
+{
+    ConsoleKeyInfo respuestaContinuar;
+
+    do
+    {
+        Console.Write("\nDesea enviar otro mensaje (S/N): ");
+        respuestaContinuar = Console.ReadKey();
+
+        if (respuestaContinuar.Key != ConsoleKey.S && respuestaContinuar.Key != ConsoleKey.N)
+        {
+            Console.WriteLine("\n\nOpcion invalida, escoja entre S o N");
+        }
+    }
+    while (respuestaContinuar.Key != ConsoleKey.S && respuestaContinuar.Key != ConsoleKey.N);
+
+    if(respuestaContinuar.Key == ConsoleKey.N)
+    {
+        return true;
+    }
+    else
+    {
+        Console.Clear();
+        return false;
+    }
+}
+
+enum TipoMensaje { 
+    Correo,
+    Facebook,
+    SMS,
+    Interno
 }
